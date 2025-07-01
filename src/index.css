@@ -62,12 +62,12 @@ footer {
 .info-move-player01 {
   position: absolute;
   top: 20%;
-  left: 3%;
+  left: 2%;
   font-size: 1.2em;
   font-weight: 600;
   background-color: #7474e2;
   color: rgb(234, 236, 238);
-  width: 350px;
+  width: 370px;
   height: 40px;
   border-radius: 20px;
   box-shadow: 4px 6px rgba(0, 0, 0, 0.558);
@@ -84,7 +84,7 @@ footer {
   font-weight: 600;
   background-color: #b13f3f;
   color: rgb(234, 236, 238);
-  width: 350px;
+  width: 370px;
   height: 40px;
   border-radius: 20px;
   display: flex;
@@ -97,9 +97,9 @@ footer {
   opacity: 0;
   transition: 0.5s;
   top: 28%;
-  left: 6.5%;
+  left: 5.6%;
   width: 12%;
-  height: 12%;
+  height: 20%;
   padding: 10px;
   border-radius: 10px;
   border: 2px solid black;
@@ -132,9 +132,9 @@ footer {
   transition: 0.5s;
   display: none;
   top: 28%;
-  left: 81.5%;
+  left: 82.5%;
   width: 12%;
-  height: 12%;
+  height: 20%;
   padding: 10px;
   border-radius: 10px;
   border: 2px solid black;

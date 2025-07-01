@@ -22,29 +22,31 @@ class Player01 {
   }
 
   playerMoveGame() {
-    window.addEventListener("keypress", (event) => {
-      switch (event.key) {
-        case "w":
-          this.py -= this.speed / 2;
-          if (this.py < 0) this.py = 0;
-          break;
-        case "a":
-          this.px -= this.speed / 2;
-          if (this.px < 0) this.px = 0;
-          break;
-        case "d":
-          this.px += this.speed / 2;
-          if (this.px > 400) this.px = 400;
-          break;
-        case "s":
-          this.py += this.speed / 2;
-          if (this.py > 700 - this.height) this.py = 700 - this.height;
-          break;
-        default:
-          return;
+    let keys = {};
+    window.addEventListener("keydown", (event) => {
+      keys[event.key] = true;
+      if (keys["w"]) {
+        this.py -= this.speed / 2;
+        if (this.py < 0) this.py = 0;
+      }
+      if (keys["a"]) {
+        this.px -= this.speed / 2;
+        if (this.px < 0) this.px = 0;
+      }
+      if (keys["d"]) {
+        this.px += this.speed / 2;
+        if (this.px > 400) this.px = 400;
+      }
+      if (keys["s"]) {
+        this.py += this.speed / 2;
+        if (this.py > 700 - this.height) this.py = 700 - this.height;
       }
 
       this.onMove();
+    });
+
+    window.document.addEventListener("keyup", (event) => {
+      keys[event.key] = false;
     });
   }
 }
@@ -72,29 +74,31 @@ class Player02 {
   }
 
   playerMoveGame() {
-    window.addEventListener("keypress", (event) => {
-      switch (event.key) {
-        case "8":
-          this.py -= this.speed / 2;
-          if (this.py < 0) this.py = 0;
-          break;
-        case "4":
-          this.px -= this.speed / 2;
-          if (this.px < 600) this.px = 600;
-          break;
-        case "6":
-          this.px += this.speed / 2;
-          if (this.px > 1000 - this.width) this.px = 1000 - 20;
-          break;
-        case "5":
-          this.py += this.speed / 2;
-          if (this.py > 700 - this.height) this.py = 700 - this.height;
-          break;
-        default:
-          return;
-      }
+    let keys = {};
+    window.addEventListener("keydown", (event) => {
+      keys[event.key] = true;
 
+      if (keys["8"]) {
+        this.py -= this.speed / 2;
+        if (this.py < 0) this.py = 0;
+      }
+      if (keys["4"]) {
+        this.px -= this.speed / 2;
+        if (this.px < 600) this.px = 600;
+      }
+      if (keys["6"]) {
+        this.px += this.speed / 2;
+        if (this.px > 1000 - this.width) this.px = 1000 - 20;
+      }
+      if (keys["5"]) {
+        this.py += this.speed / 2;
+        if (this.py > 700 - this.height) this.py = 700 - this.height;
+      }
       this.onMove();
+    });
+
+    window.document.addEventListener("keyup", (event) => {
+      keys[event.key] = false;
     });
   }
 }

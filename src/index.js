@@ -27,6 +27,14 @@ class Player01 {
           this.py -= this.speed;
           if (this.py < 0) this.py = 0;
           break;
+        case "a":
+          this.px -= this.speed;
+          if (this.px < 0) this.px = 0;
+          break;
+        case "d":
+          this.px += this.speed;
+          if (this.px > 400) this.px = 400;
+          break;
         case "s":
           this.py += this.speed;
           if (this.py > 700 - this.height) this.py = 700 - this.height;
@@ -68,6 +76,14 @@ class Player02 {
         case "8":
           this.py -= this.speed;
           if (this.py < 0) this.py = 0;
+          break;
+        case "4":
+          this.px -= this.speed;
+          if (this.px < 600) this.px = 600;
+          break;
+        case "6":
+          this.px += this.speed;
+          if (this.px > 1000 - this.width) this.px = 1000 - 20;
           break;
         case "5":
           this.py += this.speed;

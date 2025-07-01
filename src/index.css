@@ -29,14 +29,15 @@ body {
   margin-top: 1.2%;
   border: none;
   border-radius: 10px;
-  box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.59);
-  background-color: #44ce94;
+  background-color: #44aece;
   font-size: 1em;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.4s;
 }
 #start:hover {
-  background-color: #66ddab;
+  background-color: #66cbdd;
+  box-shadow: 4px 6px rgba(0, 0, 0, 0.59);
 }
 #start:active {
   transform: scale(0.9);
@@ -61,12 +62,12 @@ footer {
 .info-move-player01 {
   position: absolute;
   top: 20%;
-  left: 4%;
+  left: 3%;
   font-size: 1.2em;
   font-weight: 600;
   background-color: #7474e2;
   color: rgb(234, 236, 238);
-  width: 330px;
+  width: 350px;
   height: 40px;
   border-radius: 20px;
   box-shadow: 4px 6px rgba(0, 0, 0, 0.558);
@@ -83,7 +84,7 @@ footer {
   font-weight: 600;
   background-color: #b13f3f;
   color: rgb(234, 236, 238);
-  width: 330px;
+  width: 350px;
   height: 40px;
   border-radius: 20px;
   display: flex;

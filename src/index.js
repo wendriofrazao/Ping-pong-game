@@ -121,6 +121,8 @@ class ballGame {
       this.diry *= -1;
     }
 
+    // Colisão com jogador do lado esquerdo
+
     if (
       this.x - this.radius <= player.px + player.width &&
       this.x > player.px &&
@@ -129,6 +131,35 @@ class ballGame {
     ) {
       this.dirx *= -1;
       this.x = player.px + player.width + this.radius;
+    }
+  }
+  move2(player) {
+    this.x += this.dirx * this.speed;
+    this.y += this.diry * this.speed;
+
+    if (
+      this.x + this.radius >= this.ctx.canvas.width ||
+      this.x - this.radius <= 0
+    ) {
+      this.dirx *= -1;
+    }
+
+    if (
+      this.y + this.radius >= this.ctx.canvas.height ||
+      this.y - this.radius <= 0
+    ) {
+      this.diry *= -1;
+    }
+
+    // Colisão com jogador do lado direito
+    if (
+      this.x + this.radius >= player.px &&
+      this.x < player.px + player.width &&
+      this.y >= player.py &&
+      this.y <= player.py + player.height
+    ) {
+      this.dirx *= -1;
+      this.x = player.px - this.radius;
     }
   }
 }
@@ -158,6 +189,7 @@ class Game {
 
   loop() {
     this.bola.move(this.jogador01);
+    this.bola.move2(this.jogador02);
     this.draw();
     requestAnimationFrame(() => this.loop());
   }

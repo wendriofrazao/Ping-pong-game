@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Ping Pong</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>Ping Pong - Beta</h1>
+
+    <canvas id="create-canvas" width="1000" height="700"></canvas>
+    <button id="start">iniciar</button>
+
+    <!-- jogador 01 moving info -->
+    <p class="info-move-player01">Como se mover, player 1 aperte "Q"</p>
+    <!-- jogador 02 moving info -->
+    <p class="info-move-player02">Como se mover, player 2 aperte "E"</p>
+
+    <!-- modal info 1 -->
+    <div class="information-player01-move">
+      <h2>Como se mover</h2>
+      <ul>
+        <li>Para cima - <span>"w"</span></li>
+        <li>Para baixo - <span>"s"</span></li>
+      </ul>
+    </div>
+
+    <!-- modal info 2 -->
+    <div class="information-player02-move">
+      <h2>Como se mover</h2>
+      <ul>
+        <li>Para cima - <span>"8"</span></li>
+        <li>Para baixo -<span>"5"</span></li>
+      </ul>
+    </div>
+
+    <footer>Copyright © 2025 - Ping Pong</footer>
+    <script>
+      // teste
+      const infoPlayer01 = document.getElementsByClassName(
+        "information-player01-move"
+      )[0];
+      const infoPlayer02 = document.getElementsByClassName(
+        "information-player02-move"
+      )[0];
+
+      window.document.addEventListener("keydown", (event) => {
+        if (event.key == "q") infoPlayer01.style.opacity = 1;
+        if (event.key == "e") infoPlayer02.style.opacity = 1;
+      });
+
+      window.document.addEventListener("keyup", (event) => {
+        if (event.key) infoPlayer01.style.opacity = 0;
+        infoPlayer02.style.opacity = 0;
+      });
+
+      // canvas
+      const canvas = document.getElementById("create-canvas");
+      let ctx = canvas.getContext("2d");
+
+      const gameStart = document.getElementById("start");
+
+      gameStart.addEventListener("click", onload);
+
+      function onload() {
+        let game = new Game(ctx);
+        return game;
+      }
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>

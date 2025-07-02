@@ -109,7 +109,7 @@ class ballGame {
     this.x = 50;
     this.y = 50;
     this.radius = 25;
-    this.speed = 6;
+    this.speed = 3;
     this.angleStart = 0;
     this.angleEnd = Math.PI * 2;
 
@@ -185,11 +185,31 @@ class ballGame {
   }
 }
 
+class score {
+  constructor(ctx) {
+    this.ctx = ctx;
+    this.countPlr1 = 0;
+    this.countPlr2 = 0;
+    this.width = canvas.width / 2;
+    this.height = canvas.height / 20;
+  }
+  showScore() {
+    this.ctx.font = "35px Arial";
+    this.ctx.fillStyle = "#B33F00";
+    this.ctx.textAlign = "center";
+    this.ctx.textBaseline = "middle";
+    this.ctx.fillText(`${this.countPlr1}`, this.width - 30, this.height);
+    this.ctx.fillText("-", this.width, this.height - 2);
+    this.ctx.fillText(`${this.countPlr2}`, this.width + 30, this.height);
+  }
+}
+
 class Game {
   constructor(ctx) {
     this.ctx = ctx;
     this.jogador01 = new Player01(ctx);
     this.jogador02 = new Player02(ctx);
+    this.placar = new score(ctx);
     this.bola = new ballGame(ctx);
     this.init();
   }
@@ -205,6 +225,7 @@ class Game {
     this.ctx.clearRect(0, 0, 1000, 700);
     this.jogador01.generation();
     this.jogador02.generation();
+    this.placar.showScore();
     this.bola.createBall();
   }
 

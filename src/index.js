@@ -126,6 +126,8 @@ class ballGame {
   }
 
   move(player) {
+    const audio = document.createElement("audio");
+
     this.x += this.dirx * this.speed;
     this.y += this.diry * this.speed;
 
@@ -134,6 +136,8 @@ class ballGame {
       this.y - this.radius <= 0
     ) {
       this.diry *= -1;
+      audio.src = "../audio/parede.mp3";
+      audio.play();
     }
 
     // Colisão com jogador do lado esquerdo
@@ -146,9 +150,13 @@ class ballGame {
     ) {
       this.dirx *= -1;
       this.x = player.px + player.width + this.radius;
+      audio.src = "../audio/rebote.mp3";
+      audio.play();
     }
   }
   move2(player) {
+    const audio = document.createElement("audio");
+
     this.x += this.dirx * this.speed;
     this.y += this.diry * this.speed;
 
@@ -157,6 +165,8 @@ class ballGame {
       this.y - this.radius <= 0
     ) {
       this.diry *= -1;
+      audio.src = "../audio/parede.mp3";
+      audio.play();
     }
 
     // Colisão com jogador do lado direito
@@ -168,6 +178,8 @@ class ballGame {
     ) {
       this.dirx *= -1;
       this.x = player.px - this.radius;
+      audio.src = "../audio/rebote.mp3";
+      audio.play();
     }
   }
   resetPosition() {
@@ -200,32 +212,24 @@ class score {
     this.ctx.fillText(`${this.countPlr2}`, this.width + 30, this.height);
   }
   countPoints(bola) {
-    if (!this._canCount) return;
-
+    const audioPoint = document.createElement("audio");
     const point = 1;
 
     // ponto do jogador 2
     if (bola.x - bola.radius <= 0) {
       this.countPlr2 += point;
-      console.log(`Player 2: ${this.countPlr2}`);
-      this._pauseCounting();
       bola.resetPosition();
+      audioPoint.src = "../audio/pontos.mp3";
+      audioPoint.play();
     }
 
     // ponto do jogador 1
     if (bola.x + bola.radius >= this.ctx.canvas.width) {
       this.countPlr1 += point;
-      console.log(`Player 1: ${this.countPlr1}`);
-      this._pauseCounting();
       bola.resetPosition();
+      audioPoint.src = "../audio/pontos.mp3";
+      audioPoint.play();
     }
-  }
-
-  _pauseCounting() {
-    this._canCount = false;
-    setTimeout(() => {
-      this._canCount = true;
-    }, 800);
   }
 }
 

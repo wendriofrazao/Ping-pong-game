@@ -6,7 +6,7 @@ class Player01 {
     this.py = 0;
     this.width = 20;
     this.height = 150;
-    this.speed = 30;
+    this.speed = 100;
     this.onMove = () => {};
   }
 
@@ -58,7 +58,7 @@ class Player02 {
     this.py = 700 - 150;
     this.width = 20;
     this.height = 150;
-    this.speed = 30;
+    this.speed = 100;
     this.onMove = () => {};
   }
 

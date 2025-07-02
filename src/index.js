@@ -13,7 +13,6 @@ class Player01 {
   setOnMove(callback) {
     this.onMove = callback;
     this.playerMoveGame();
-    requestAnimationFrame(this.setOnMove);
   }
 
   generation() {
@@ -131,11 +130,6 @@ class ballGame {
     this.y += this.diry * this.speed;
 
     if (
-      this.x + this.radius >= this.ctx.canvas.width ||
-      this.x - this.radius <= 0
-    ) {
-      this.dirx *= -1;
-    } else if (
       this.y + this.radius >= this.ctx.canvas.height ||
       this.y - this.radius <= 0
     ) {
@@ -159,13 +153,6 @@ class ballGame {
     this.y += this.diry * this.speed;
 
     if (
-      this.x + this.radius >= this.ctx.canvas.width ||
-      this.x - this.radius <= 0
-    ) {
-      this.dirx *= -1;
-    }
-
-    if (
       this.y + this.radius >= this.ctx.canvas.height ||
       this.y - this.radius <= 0
     ) {
@@ -183,6 +170,14 @@ class ballGame {
       this.x = player.px - this.radius;
     }
   }
+  resetPosition() {
+    if (
+      this.x + this.radius >= this.ctx.canvas.width ||
+      this.x - this.radius <= 0
+    ) {
+      this.dirx *= -1;
+    }
+  }
 }
 
 class score {
@@ -192,15 +187,45 @@ class score {
     this.countPlr2 = 0;
     this.width = canvas.width / 2;
     this.height = canvas.height / 20;
+    this._canCount = true;
   }
   showScore() {
     this.ctx.font = "35px Arial";
     this.ctx.fillStyle = "#B33F00";
     this.ctx.textAlign = "center";
     this.ctx.textBaseline = "middle";
+
     this.ctx.fillText(`${this.countPlr1}`, this.width - 30, this.height);
     this.ctx.fillText("-", this.width, this.height - 2);
     this.ctx.fillText(`${this.countPlr2}`, this.width + 30, this.height);
+  }
+  countPoints(bola) {
+    if (!this._canCount) return;
+
+    const point = 1;
+
+    // ponto do jogador 2
+    if (bola.x - bola.radius <= 0) {
+      this.countPlr2 += point;
+      console.log(`Player 2: ${this.countPlr2}`);
+      this._pauseCounting();
+      bola.resetPosition();
+    }
+
+    // ponto do jogador 1
+    if (bola.x + bola.radius >= this.ctx.canvas.width) {
+      this.countPlr1 += point;
+      console.log(`Player 1: ${this.countPlr1}`);
+      this._pauseCounting();
+      bola.resetPosition();
+    }
+  }
+
+  _pauseCounting() {
+    this._canCount = false;
+    setTimeout(() => {
+      this._canCount = true;
+    }, 800);
   }
 }
 
@@ -232,6 +257,7 @@ class Game {
   loop() {
     this.bola.move(this.jogador01);
     this.bola.move2(this.jogador02);
+    this.placar.countPoints(this.bola);
     this.draw();
     requestAnimationFrame(() => this.loop());
   }

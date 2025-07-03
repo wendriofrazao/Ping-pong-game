@@ -9,6 +9,8 @@ Um jogo de Ping Pong para dois jogadores, onde a habilidade, reflexo e estratég
 * Jogador 2: Teclas numéricas 8 (cima), 5 (baixo), 4 (esquerda) e 6 (direita) 
 # 🔧 Possíveis Expansões Futuras:
 * Pontuação até X pontos com tela de "Vitória"
-* Sons de rebote e pontuação
+* ~~Sons de rebote e pontuação~~
 * IA opcional para jogar contra o computador
 * Modo Torneio / Ranking
+### 🔄 Mudança Adicionada
+* Adicionar um botão que abre um Color Picker que mude o background

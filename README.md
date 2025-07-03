@@ -12,3 +12,5 @@ Um jogo de Ping Pong para dois jogadores, onde a habilidade, reflexo e estratég
 * ~~Sons de rebote e pontuação~~
 * IA opcional para jogar contra o computador
 * Modo Torneio / Ranking
+## 🔄 Mudança Adicionada
+* Adicionar um botão que abre um Color Picker que mude o background

@@ -136,7 +136,7 @@ class ballGame {
       this.y - this.radius <= 0
     ) {
       this.diry *= -1;
-      audio.src = "../audio/parede.mp3";
+      audio.src = "./audio/parede.mp3";
       audio.play();
     }
 
@@ -150,7 +150,7 @@ class ballGame {
     ) {
       this.dirx *= -1;
       this.x = player.px + player.width + this.radius;
-      audio.src = "../audio/rebote.mp3";
+      audio.src = "./audio/rebote.mp3";
       audio.play();
     }
   }
@@ -165,7 +165,7 @@ class ballGame {
       this.y - this.radius <= 0
     ) {
       this.diry *= -1;
-      audio.src = "../audio/parede.mp3";
+      audio.src = "./audio/parede.mp3";
       audio.play();
     }
 
@@ -178,7 +178,7 @@ class ballGame {
     ) {
       this.dirx *= -1;
       this.x = player.px - this.radius;
-      audio.src = "../audio/rebote.mp3";
+      audio.src = "./audio/rebote.mp3";
       audio.play();
     }
   }
@@ -219,7 +219,7 @@ class score {
     if (bola.x - bola.radius <= 0) {
       this.countPlr2 += point;
       bola.resetPosition();
-      audioPoint.src = "../audio/pontos.mp3";
+      audioPoint.src = "./audio/pontos.mp3";
       audioPoint.play();
     }
 
@@ -227,7 +227,7 @@ class score {
     if (bola.x + bola.radius >= this.ctx.canvas.width) {
       this.countPlr1 += point;
       bola.resetPosition();
-      audioPoint.src = "../audio/pontos.mp3";
+      audioPoint.src = "./audio/pontos.mp3";
       audioPoint.play();
     }
   }

@@ -10,13 +10,19 @@
       type="image/x-icon"
     />
     <title>Ping Pong</title>
-    <style></style>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
   </head>
   <body>
-    <h1>Ping Pong - Beta</h1>
+    <h1>Ping Pong</h1>
 
     <canvas id="create-canvas" width="1000" height="700"></canvas>
     <button id="start">Começar</button>
+
+    <button class="btn-change-bg" id="change-bg">Mudar fundo</button>
+
+    <div class="conteiner-lib-iro" id="conteiner-lib">
+      <div id="colorPickerContainer"></div>
+    </div>
 
     <!-- jogador 01 moving info -->
     <p class="info-move-player01">Como se mover, player 1 pressionar "Q"</p>
@@ -47,7 +53,7 @@
 
     <footer>Copyright © 2025 - Ping Pong</footer>
     <script>
-      // teste
+      // informações dos controles
       const infoPlayer01 = document.getElementsByClassName(
         "information-player01-move"
       )[0];
@@ -63,6 +69,44 @@
       window.document.addEventListener("keyup", (event) => {
         if (event.key) infoPlayer01.style.opacity = 0;
         infoPlayer02.style.opacity = 0;
+      });
+
+      // mudar o background com a lib iro.js
+      var colorPicker = new iro.ColorPicker("#colorPickerContainer", {
+        width: 200,
+        color: "#ff0000",
+        layout: [
+          { component: iro.ui.Wheel },
+          { component: iro.ui.Slider, options: { sliderType: "value" } },
+          { component: iro.ui.Slider, options: { sliderType: "alpha" } },
+        ],
+      });
+
+      colorPicker.on("color:change", function (color) {
+        document.body.style.backgroundColor = color.rgbaString;
+      });
+
+      // botão para acessar o layout de cores
+      const layoutColor = document.getElementById("conteiner-lib");
+      const btnChange = document.getElementById("change-bg");
+      let validate = false;
+
+      btnChange.addEventListener("click", () => {
+        if (!validate) {
+          validate = true;
+          // botão
+          btnChange.innerHTML = "Fechar";
+          btnChange.style.backgroundColor = "#dd6666";
+          // layout de cores
+          layoutColor.style.display = "block";
+        } else {
+          validate = false;
+          // botão
+          btnChange.innerHTML = "Mudar fundo";
+          btnChange.style.backgroundColor = "#66dd96";
+          // layout de cores
+          layoutColor.style.display = "none";
+        }
       });
 
       // canvas
